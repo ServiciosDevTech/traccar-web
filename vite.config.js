@@ -25,9 +25,12 @@ export default defineConfig(() => ({
         globPatterns: ['**/*.{js,css,html,woff,woff2,mp3}'],
       },
       manifest: {
-        short_name: '${title}',
-        name: '${description}',
-        theme_color: '${colorPrimary}',
+        short_name: 'Multisoluciones',
+        name: 'Multisoluciones — Seguimiento de Comerciales',
+        theme_color: '#02685D',
+        background_color: '#02685D',
+        description: 'Plataforma de seguimiento y gestión de comerciales Multisoluciones',
+        lang: 'es',
         icons: [
           {
             src: 'pwa-64x64.png',

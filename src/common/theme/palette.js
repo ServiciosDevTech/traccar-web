@@ -1,27 +1,50 @@
-import { grey, green, indigo } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 const validatedColor = (color) => (/^#([0-9A-Fa-f]{3}){1,2}$/.test(color) ? color : null);
+
+// Multisoluciones brand palette
+const brand = {
+  primary: '#02685D',
+  primaryLight: '#3F8175',
+  primaryDark: '#014A42',
+  secondary: '#3F8175',
+  secondaryLight: '#5BA193',
+  secondaryDark: '#2C5C53',
+  neutral: '#676666',
+  white: '#FFFFFF',
+};
 
 export default (server, darkMode) => ({
   mode: darkMode ? 'dark' : 'light',
   background: {
-    default: darkMode ? grey[900] : grey[50],
+    default: darkMode ? '#0F1F1D' : '#F5F8F7',
+    paper: darkMode ? '#152A27' : brand.white,
   },
   primary: {
     main:
-      validatedColor(server?.attributes?.colorPrimary) || (darkMode ? indigo[200] : indigo[900]),
+      validatedColor(server?.attributes?.colorPrimary)
+      || (darkMode ? brand.primaryLight : brand.primary),
+    light: brand.primaryLight,
+    dark: brand.primaryDark,
+    contrastText: brand.white,
   },
   secondary: {
     main:
-      validatedColor(server?.attributes?.colorSecondary) || (darkMode ? green[200] : green[800]),
+      validatedColor(server?.attributes?.colorSecondary)
+      || (darkMode ? brand.secondaryLight : brand.secondary),
+    light: brand.secondaryLight,
+    dark: brand.secondaryDark,
+    contrastText: brand.white,
   },
   neutral: {
-    main: grey[500],
+    main: brand.neutral,
+    contrastText: brand.white,
   },
   geometry: {
-    main: '#3bb2d0',
+    main: brand.primaryLight,
   },
   alwaysDark: {
     main: grey[900],
   },
+  brand,
 });

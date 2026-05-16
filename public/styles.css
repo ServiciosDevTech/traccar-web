@@ -5,11 +5,15 @@ html, body {
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #F5F8F7;
+  color: #1f2d2b;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: black;
+    background: #0F1F1D;
+    color: #e6efed;
   }
 }
 
@@ -24,4 +28,21 @@ body {
     height: auto !important;
     overflow: visible !important;
   }
+}
+
+.loader {
+  position: fixed;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  width: 50px;
+  aspect-ratio: 1;
+  box-sizing: content-box;
+  animation: ms-spin 1s infinite linear;
+  border-radius: 50%;
+  border: 8px solid rgba(2, 104, 93, 0.18);
+  border-right-color: #02685D;
+}
+
+@keyframes ms-spin {
+  to { transform: rotate(1turn); }
 }
