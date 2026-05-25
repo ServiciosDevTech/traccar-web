@@ -11,12 +11,12 @@ RUN npm run build
 
 FROM nginx:1.27-alpine
 
-ENV PORT=80
-ENV TRACCAR_BACKEND_URL=http://localhost:8082
+ENV PORT=${PORT}
+ENV TRACCAR_BACKEND_URL=${TRACCAR_BACKEND_URL}
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf && mkdir -p /etc/nginx/templates
 RUN cat <<'EOF' > /etc/nginx/templates/default.conf.template
 server {
     listen ${PORT};
